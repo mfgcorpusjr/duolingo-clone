@@ -18,3 +18,16 @@ export type TOpenEnded = {
   text: string;
   answer: string;
 };
+
+export type TWordTranslationOption = {
+  id: number;
+  text: string;
+  isCorrect: boolean;
+};
+
+export type TWordTranslation = {
+  id: number;
+  type: string;
+  text: string;
+  options: TWordTranslationOption[];
+};

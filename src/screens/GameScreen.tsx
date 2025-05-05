@@ -6,10 +6,11 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import Header from "@/components/Header";
 import ImageMultipleChoice from "@/components/ImageMultipleChoice";
 import OpenEnded from "@/components/OpenEnded";
+import WordTranlation from "@/components/WordTranslation";
 
 import questions from "@/questions";
 
-import { TImageMultipleChoice, TOpenEnded } from "@/types";
+import { TImageMultipleChoice, TOpenEnded, TWordTranslation } from "@/types";
 
 export default function GameScreen() {
   const [index, setIndex] = useState(0);
@@ -107,6 +108,14 @@ export default function GameScreen() {
         {question.type === "OPEN_ENDED" && (
           <OpenEnded
             question={question as TOpenEnded}
+            onCorrect={handleCorrect}
+            onIncorrect={handleIncorrect}
+          />
+        )}
+
+        {question.type === "WORD_TRANSLATION" && (
+          <WordTranlation
+            question={question as TWordTranslation}
             onCorrect={handleCorrect}
             onIncorrect={handleIncorrect}
           />

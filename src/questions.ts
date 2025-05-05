@@ -40,16 +40,35 @@ export default [
     text: "Yo soy un hombre",
     answer: "I am a man",
   },
-  // {
-  //   id: 3,
-  //   type: ""
-  // },
-  // {
-  //   id: 4,
-  //   type: ""
-  // },
   {
-    id: 5,
+    id: 3,
+    type: "WORD_TRANSLATION",
+    text: "Por favor",
+    options: [
+      {
+        id: 1,
+        text: "Hello",
+        isCorrect: false,
+      },
+      {
+        id: 2,
+        text: "Please",
+        isCorrect: true,
+      },
+      {
+        id: 3,
+        text: "Thank you",
+        isCorrect: false,
+      },
+      {
+        id: 4,
+        text: "Goodbye",
+        isCorrect: false,
+      },
+    ],
+  },
+  {
+    id: 4,
     type: "IMAGE_MULTIPLE_CHOICE",
     question: 'Which of these is "the coffee"?',
     options: [
@@ -84,21 +103,40 @@ export default [
     ],
   },
   {
-    id: 6,
+    id: 5,
     type: "OPEN_ENDED",
     text: "La mujer",
     answer: "the woman",
   },
-  // {
-  //   id: 7,
-  //   type: ""
-  // },
-  // {
-  //   id: 8,
-  //   type: ""
-  // },
   {
-    id: 9,
+    id: 6,
+    type: "WORD_TRANSLATION",
+    text: "Agua",
+    options: [
+      {
+        id: 1,
+        text: "Food",
+        isCorrect: false,
+      },
+      {
+        id: 2,
+        text: "House",
+        isCorrect: false,
+      },
+      {
+        id: 3,
+        text: "Friend",
+        isCorrect: false,
+      },
+      {
+        id: 4,
+        text: "Water",
+        isCorrect: true,
+      },
+    ],
+  },
+  {
+    id: 7,
     type: "IMAGE_MULTIPLE_CHOICE",
     question: 'Which of these is "the cup"?',
     options: [
@@ -133,9 +171,36 @@ export default [
     ],
   },
   {
-    id: 10,
+    id: 8,
     type: "OPEN_ENDED",
     text: "Me gusta React Native",
     answer: "I like react native",
+  },
+  {
+    id: 9,
+    type: "WORD_TRANSLATION",
+    text: "Gato",
+    options: [
+      {
+        id: 1,
+        text: "Cat",
+        isCorrect: true,
+      },
+      {
+        id: 2,
+        text: "Dog",
+        isCorrect: false,
+      },
+      {
+        id: 3,
+        text: "Book",
+        isCorrect: false,
+      },
+      {
+        id: 4,
+        text: "Car",
+        isCorrect: false,
+      },
+    ],
   },
 ];
