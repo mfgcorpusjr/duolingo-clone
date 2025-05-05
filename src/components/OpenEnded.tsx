@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { StyleSheet, View, Image, Text, TextInput } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Image,
+  Text,
+  TextInput,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 
 import Instructions from "@/components/Instructions";
 import Button from "@/components/Button";
@@ -30,7 +38,11 @@ export default function OpenEnded({
   };
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      keyboardVerticalOffset={80}
+      style={styles.container}
+    >
       <Instructions text="Translate this sentence" />
 
       <View style={styles.contentContainer}>
@@ -59,7 +71,7 @@ export default function OpenEnded({
       </View>
 
       <Button text="Check" isDisabled={!input.trim()} onPress={handleCheck} />
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
