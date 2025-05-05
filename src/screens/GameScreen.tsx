@@ -4,13 +4,14 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import Header from "@/components/Header";
 import ImageMultipleChoice from "@/components/ImageMultipleChoice";
+import OpenEnded from "@/components/OpenEnded";
 
 import questions from "@/questions";
 
-import { TImageMultipleChoice } from "@/types";
+import { TImageMultipleChoice, TOpenEnded } from "@/types";
 
 export default function GameScreen() {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(1);
 
   const question = questions[index];
 
@@ -21,6 +22,10 @@ export default function GameScreen() {
 
         {question.type === "IMAGE_MULTIPLE_CHOICE" && (
           <ImageMultipleChoice question={question as TImageMultipleChoice} />
+        )}
+
+        {question.type === "OPEN_ENDED" && (
+          <OpenEnded question={question as TOpenEnded} />
         )}
       </View>
     </SafeAreaView>
