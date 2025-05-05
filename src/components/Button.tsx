@@ -12,6 +12,7 @@ export default function Button({ text, isDisabled, onPress }: ButtonProps) {
   return (
     <Pressable
       style={[styles.container, isDisabled && styles.disabledContainer]}
+      disabled={isDisabled}
       onPress={onPress}
     >
       <Text style={styles.text}>{text}</Text>

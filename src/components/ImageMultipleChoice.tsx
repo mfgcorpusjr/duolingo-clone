@@ -1,19 +1,35 @@
+import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 import Instructions from "@/components/Instructions";
 import ImageMultipleChoiceOption from "@/components/ImageMultipleChoiceOption";
 import Button from "@/components/Button";
 
-import { TImageMultipleChoice } from "@/types";
+import { TImageMultipleChoice, TImageMultipleChoiceOption } from "@/types";
 
 type ImageMultipleChoiceProps = {
   question: TImageMultipleChoice;
+  onCorrect: () => void;
+  onIncorrect: () => void;
 };
 
 export default function ImageMultipleChoice({
   question,
+  onCorrect,
+  onIncorrect,
 }: ImageMultipleChoiceProps) {
-  const handleCheck = () => {};
+  const [selectedOption, setSelectedOption] =
+    useState<TImageMultipleChoiceOption>();
+
+  const handleCheck = () => {
+    if (selectedOption?.isCorrect) {
+      onCorrect();
+    } else {
+      onIncorrect();
+    }
+
+    setSelectedOption(undefined);
+  };
 
   return (
     <View style={styles.container}>
@@ -21,11 +37,16 @@ export default function ImageMultipleChoice({
 
       <View style={styles.optionsContainer}>
         {question.options.map((option) => (
-          <ImageMultipleChoiceOption key={option.id} option={option} />
+          <ImageMultipleChoiceOption
+            key={option.id}
+            option={option}
+            isSelected={option.id === selectedOption?.id}
+            onPress={() => setSelectedOption(option)}
+          />
         ))}
       </View>
 
-      <Button text="Check" onPress={handleCheck} />
+      <Button text="Check" isDisabled={!selectedOption} onPress={handleCheck} />
     </View>
   );
 }

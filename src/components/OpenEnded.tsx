@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { StyleSheet, View, Image, Text, TextInput } from "react-native";
 
 import Instructions from "@/components/Instructions";
@@ -7,10 +8,26 @@ import { TOpenEnded } from "@/types";
 
 type OpenEndedProps = {
   question: TOpenEnded;
+  onCorrect: () => void;
+  onIncorrect: () => void;
 };
 
-export default function OpenEnded({ question }: OpenEndedProps) {
-  const handleCheck = () => {};
+export default function OpenEnded({
+  question,
+  onCorrect,
+  onIncorrect,
+}: OpenEndedProps) {
+  const [input, setInput] = useState("");
+
+  const handleCheck = () => {
+    if (input.trim().toLowerCase() === question.answer.toLowerCase()) {
+      onCorrect();
+    } else {
+      onIncorrect();
+    }
+
+    setInput("");
+  };
 
   return (
     <View style={styles.container}>
@@ -31,6 +48,8 @@ export default function OpenEnded({ question }: OpenEndedProps) {
 
         <TextInput
           style={styles.textInput}
+          value={input}
+          onChangeText={setInput}
           placeholder="Type in English"
           multiline
           autoCorrect={false}
@@ -39,7 +58,7 @@ export default function OpenEnded({ question }: OpenEndedProps) {
         />
       </View>
 
-      <Button text="Check" onPress={handleCheck} />
+      <Button text="Check" isDisabled={!input.trim()} onPress={handleCheck} />
     </View>
   );
 }

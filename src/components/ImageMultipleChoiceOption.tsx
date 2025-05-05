@@ -1,4 +1,4 @@
-import { StyleSheet, View, Image, Text } from "react-native";
+import { StyleSheet, Pressable, Image, Text } from "react-native";
 
 import { TImageMultipleChoiceOption } from "@/types";
 
@@ -7,21 +7,26 @@ import colors from "@/constants/colors";
 type ImageMultipleChoiceOptionProps = {
   option: TImageMultipleChoiceOption;
   isSelected?: boolean;
+  onPress: () => void;
 };
 
 export default function ImageMultipleChoiceOption({
   option,
   isSelected,
+  onPress,
 }: ImageMultipleChoiceOptionProps) {
   return (
-    <View style={[styles.container, isSelected && styles.selectedContainer]}>
+    <Pressable
+      style={[styles.container, isSelected && styles.selectedContainer]}
+      onPress={onPress}
+    >
       <Image
         style={styles.image}
         source={{ uri: option.image }}
         resizeMode="contain"
       />
       <Text style={styles.text}>{option.text}</Text>
-    </View>
+    </Pressable>
   );
 }
 

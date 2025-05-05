@@ -2,10 +2,14 @@ import { StyleSheet, View } from "react-native";
 
 import colors from "@/constants/colors";
 
-export default function ProgressBar() {
+type ProgressBarProps = {
+  progress: number;
+};
+
+export default function ProgressBar({ progress }: ProgressBarProps) {
   return (
     <View style={styles.container}>
-      <View style={[styles.foreground, { width: "33%" }]}>
+      <View style={[styles.foreground, { width: `${progress}%` }]}>
         <View style={styles.highlight} />
       </View>
     </View>

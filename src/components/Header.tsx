@@ -2,10 +2,15 @@ import { StyleSheet, View, Image, Text } from "react-native";
 
 import ProgressBar from "@/components/ProgressBar";
 
-export default function Header() {
+type HeaderProps = {
+  lives: number;
+  progress: number;
+};
+
+export default function Header({ progress, lives }: HeaderProps) {
   return (
     <View style={styles.container}>
-      <ProgressBar />
+      <ProgressBar progress={progress} />
 
       <Image
         style={styles.heartIcon}
@@ -13,7 +18,7 @@ export default function Header() {
         resizeMode="contain"
       />
 
-      <Text style={styles.lives}>3</Text>
+      <Text style={styles.lives}>{lives}</Text>
     </View>
   );
 }
